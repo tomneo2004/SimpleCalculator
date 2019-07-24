@@ -91,7 +91,7 @@ class NumberNode: Node {
     
     ///hold part of fraction number
     ///use decmial to be more precise
-    private var fractionNumber : Decimal = Decimal.zero
+    private var fractionNumber : Decimal = Decimal()
     
     ///offset of fraction number e.g 0.0123 offset is 4
     ///if fraction number is 0.0 offset will be 0
@@ -147,7 +147,7 @@ class NumberNode: Node {
         //if number is Integer
         if isInt{
             
-            fractionNumber = Decimal.zero
+            fractionNumber = Decimal()
             fractionOffset = 0
             isDecimal = false
         }
@@ -277,7 +277,7 @@ extension Decimal{
     ///
     ///return true if decimal only have integer part otherwise false
     func isInteger() -> Bool{
-        return self.exponent >= 0
+        return self.fractionPart() == Decimal()
     }
     
     ///extension to decimal
@@ -339,7 +339,7 @@ extension Decimal{
     ///either -1 or 1
     func signInt() -> Int{
         
-        return self < Decimal.zero ? -1 : 1
+        return self < Decimal() ? -1 : 1
     }
     
     ///extension to decimal
@@ -348,7 +348,7 @@ extension Decimal{
     ///either -1(Decimal) or 1(Decimal)
     func signDecimal() -> Decimal{
         
-        return self < Decimal.zero ? Decimal(sign: .minus, exponent: 0, significand: 1) : Decimal(sign: .plus, exponent: 0, significand: 1)
+        return self < Decimal() ? Decimal(sign: .minus, exponent: 0, significand: 1) : Decimal(sign: .plus, exponent: 0, significand: 1)
     }
     
     ///extension to decimal

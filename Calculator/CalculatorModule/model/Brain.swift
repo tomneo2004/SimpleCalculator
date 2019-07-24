@@ -267,7 +267,7 @@ extension Brain {
     
     ///reset brain to initial state
     ///which is jsut a NumberNode with zero value
-    private func reset(_ value : Decimal = Decimal.zero){
+    private func reset(_ value : Decimal = Decimal()){
         
         tailNode = NumberNode(value)
     }
